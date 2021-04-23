@@ -25,12 +25,12 @@ variable "app_tier_count" {
 
 variable "app_tier_machinetype" {
     type = string
-    description = "Machine typefor app tier instances"
+    description = "Machine type for app tier instances"
     default = "f1-micro"
 }
 
 variable "data_tier_machinetype" {
     type = string
-    description = "Machine typefor data tier instances"
+    description = "Machine type for data tier instances"
     default = "db-f1-micro"
 }
