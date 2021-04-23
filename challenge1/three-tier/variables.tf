@@ -1,36 +1,36 @@
 variable "project" {
-    type        = string
-    description = "GCP Project name"
+  type        = string
+  description = "GCP Project name"
 }
 
 variable "region" {
-    type        = string
-    description = "GCP Region for deploy"
+  type        = string
+  description = "GCP Region for deploy"
 }
 
 variable "zone" {
-    type = string
-    description = "GCP Zone for deploy"
+  type        = string
+  description = "GCP Zone for deploy"
 }
 
 variable "prefix" {
-    type        = string
-    description = "Uniquie identifier for deploy"
+  type        = string
+  description = "Uniquie identifier for deploy"
 }
 
 variable "app_tier_count" {
-    type = number
-    description = "Number of app tier instances"
+  type        = number
+  description = "Number of app tier instances"
 }
 
 variable "app_tier_machinetype" {
-    type = string
-    description = "Machine type for app tier instances"
-    default = "f1-micro"
+  type        = string
+  description = "Machine type for app tier instances"
+  default     = "f1-micro"
 }
 
 variable "data_tier_machinetype" {
-    type = string
-    description = "Machine type for data tier instances"
-    default = "db-f1-micro"
+  type        = string
+  description = "Machine type for data tier instances"
+  default     = "db-f1-micro"
 }

@@ -14,9 +14,9 @@ resource "google_compute_instance_template" "default" {
   }
 
   disk {
-    source_image      = "debian-cloud/debian-9"
-    auto_delete       = true
-    boot              = true
+    source_image = "debian-cloud/debian-9"
+    auto_delete  = true
+    boot         = true
   }
 
   network_interface {
@@ -29,9 +29,9 @@ resource "google_compute_instance_template" "default" {
 }
 
 resource "google_compute_instance_group_manager" "igm" {
-  name               = "${var.prefix}-instance-group-manager"
+  name = "${var.prefix}-instance-group-manager"
   version {
-    instance_template  = google_compute_instance_template.default.id
+    instance_template = google_compute_instance_template.default.id
   }
   base_instance_name = "${var.prefix}-app-tier-instance"
   zone               = var.zone

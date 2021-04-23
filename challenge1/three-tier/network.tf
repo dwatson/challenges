@@ -1,32 +1,32 @@
 resource "google_compute_network" "basenetwork" {
-    name = "${var.prefix}-base-network"
-    auto_create_subnetworks = false
+  name                    = "${var.prefix}-base-network"
+  auto_create_subnetworks = false
 }
 
 resource "google_compute_subnetwork" "basesubnetwork" {
-    name = "${var.prefix}-base-subnetwork"
-    ip_cidr_range = "10.0.0.0/24"
-    network = google_compute_network.basenetwork.self_link
-    region = var.region
+  name          = "${var.prefix}-base-subnetwork"
+  ip_cidr_range = "10.0.0.0/24"
+  network       = google_compute_network.basenetwork.self_link
+  region        = var.region
 }
 
 module "gce-lb-http" {
-  source            = "GoogleCloudPlatform/lb-http/google"
-  version           = "~> 4.4"
+  source  = "GoogleCloudPlatform/lb-http/google"
+  version = "~> 4.4"
 
-  project           = var.project
-  name              = "${var.prefix}-http-lb"
-  target_tags       = ["allow-lb-service"]
+  project     = var.project
+  name        = "${var.prefix}-http-lb"
+  target_tags = ["allow-lb-service"]
   backends = {
     default = {
-      description                     = null
-      protocol                        = "HTTP"
-      port                            = 80
-      port_name                       = "http"
-      timeout_sec                     = 10
-      enable_cdn                      = false
-      custom_request_headers          = null
-      security_policy                 = null
+      description            = null
+      protocol               = "HTTP"
+      port                   = 80
+      port_name              = "http"
+      timeout_sec            = 10
+      enable_cdn             = false
+      custom_request_headers = null
+      security_policy        = null
 
       connection_draining_timeout_sec = null
       session_affinity                = null
@@ -44,7 +44,7 @@ module "gce-lb-http" {
       }
 
       log_config = {
-        enable = true
+        enable      = true
         sample_rate = 1.0
       }
 
